@@ -1,0 +1,82 @@
+[
+  {
+    "feature": "Current Week Cases (Baseline)",
+    "raw_feature": "cases_week_current",
+    "mean_abs_shap": 169.80106209690402
+  },
+  {
+    "feature": "River BOD (Pollution)",
+    "raw_feature": "wq_bod_mg_l",
+    "mean_abs_shap": 107.73550041631077
+  },
+  {
+    "feature": "Dissolved Oxygen (DO)",
+    "raw_feature": "wq_do_min_mg_l",
+    "mean_abs_shap": 61.21021923514347
+  },
+  {
+    "feature": "Fecal Coliform Count",
+    "raw_feature": "wq_fecal_coliform_mpn",
+    "mean_abs_shap": 45.10933769256423
+  },
+  {
+    "feature": "Monsoon Seasonality (Sin)",
+    "raw_feature": "sin_week",
+    "mean_abs_shap": 44.22762142165131
+  },
+  {
+    "feature": "Literacy Rate (%)",
+    "raw_feature": "literacy_rate",
+    "mean_abs_shap": 41.157399994235654
+  },
+  {
+    "feature": "2-Week Cumulative Rain",
+    "raw_feature": "rain_2week_sum",
+    "mean_abs_shap": 35.65310110112499
+  },
+  {
+    "feature": "Monsoon Seasonality (Cos)",
+    "raw_feature": "cos_week",
+    "mean_abs_shap": 32.57352910151412
+  },
+  {
+    "feature": "Current Week Rain (t)",
+    "raw_feature": "rainfall_mm_total",
+    "mean_abs_shap": 31.957758953665362
+  },
+  {
+    "feature": "2 Weeks Prior Rain (Lag-2)",
+    "raw_feature": "rain_mm_lag2",
+    "mean_abs_shap": 25.491263557690502
+  },
+  {
+    "feature": "Preceding Week Temp",
+    "raw_feature": "temp_c_lag1",
+    "mean_abs_shap": 21.654186689472315
+  },
+  {
+    "feature": "Preceding Week Rain (Lag-1)",
+    "raw_feature": "rain_mm_lag1",
+    "mean_abs_shap": 15.013541286081942
+  },
+  {
+    "feature": "Relative Humidity (%)",
+    "raw_feature": "humidity_pct_mean",
+    "mean_abs_shap": 12.620223615630175
+  },
+  {
+    "feature": "Mean Temperature (\u00b0C)",
+    "raw_feature": "temp_c_mean",
+    "mean_abs_shap": 12.364187484791518
+  },
+  {
+    "feature": "Population Density",
+    "raw_feature": "population_density",
+    "mean_abs_shap": 10.539107398998194
+  },
+  {
+    "feature": "Torrential Rain Shock",
+    "raw_feature": "is_torrential_rain",
+    "mean_abs_shap": 0.0
+  }
+]

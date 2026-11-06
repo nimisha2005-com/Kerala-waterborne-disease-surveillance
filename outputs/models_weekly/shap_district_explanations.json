@@ -1,0 +1,2284 @@
+{
+  "Alappuzha": {
+    "district": "Alappuzha",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 411.8,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 281.0,
+        "shap_impact_cases": -94.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -72.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.3,
+        "shap_impact_cases": -70.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.03,
+        "shap_impact_cases": 61.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2900.0,
+        "shap_impact_cases": 59.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.8,
+        "shap_impact_cases": -45.3,
+        "direction": "Lowers Risk"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 281.0,
+        "shap_impact_cases": -94.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -72.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.3,
+        "shap_impact_cases": -70.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.03,
+        "shap_impact_cases": 61.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2900.0,
+        "shap_impact_cases": 59.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.8,
+        "shap_impact_cases": -45.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -38.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.1,
+        "shap_impact_cases": 27.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 65.8,
+        "shap_impact_cases": -27.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1505.0,
+        "shap_impact_cases": -20.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.2,
+        "shap_impact_cases": 16.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 27.1,
+        "shap_impact_cases": 15.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 11.4,
+        "shap_impact_cases": -11.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 27.88,
+        "shap_impact_cases": -10.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 1.07,
+        "shap_impact_cases": -9.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Ernakulam": {
+    "district": "Ernakulam",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 544.9,
+    "top_drivers": [
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.9,
+        "shap_impact_cases": -119.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -99.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 543.0,
+        "shap_impact_cases": 78.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2800.0,
+        "shap_impact_cases": 50.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.63,
+        "shap_impact_cases": 43.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.5,
+        "shap_impact_cases": -41.2,
+        "direction": "Lowers Risk"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.9,
+        "shap_impact_cases": -119.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -99.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 543.0,
+        "shap_impact_cases": 78.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2800.0,
+        "shap_impact_cases": 50.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.63,
+        "shap_impact_cases": 43.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.5,
+        "shap_impact_cases": -41.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.5,
+        "shap_impact_cases": 39.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -31.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.25,
+        "shap_impact_cases": 28.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 16.74,
+        "shap_impact_cases": -19.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1070.0,
+        "shap_impact_cases": 10.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 25.92,
+        "shap_impact_cases": -10.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 69.24,
+        "shap_impact_cases": -5.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 26.6,
+        "shap_impact_cases": -5.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.62,
+        "shap_impact_cases": -4.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Idukki": {
+    "district": "Idukki",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 169.1,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 143.0,
+        "shap_impact_cases": -224.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 775.0,
+        "shap_impact_cases": -62.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.55,
+        "shap_impact_cases": -60.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -55.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.75,
+        "shap_impact_cases": -44.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 82.75,
+        "shap_impact_cases": 18.5,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 143.0,
+        "shap_impact_cases": -224.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 775.0,
+        "shap_impact_cases": -62.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.55,
+        "shap_impact_cases": -60.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -55.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.75,
+        "shap_impact_cases": -44.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 82.75,
+        "shap_impact_cases": 18.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 254.0,
+        "shap_impact_cases": -17.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 20.62,
+        "shap_impact_cases": -15.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 19.64,
+        "shap_impact_cases": -15.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 4.11,
+        "shap_impact_cases": 11.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 3.65,
+        "shap_impact_cases": 11.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 27.43,
+        "shap_impact_cases": -10.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.0,
+        "shap_impact_cases": 9.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.46,
+        "shap_impact_cases": -4.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -2.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Kannur": {
+    "district": "Kannur",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 796.7,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 559.0,
+        "shap_impact_cases": 119.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 1.21,
+        "shap_impact_cases": 92.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -89.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.4,
+        "shap_impact_cases": 88.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.17,
+        "shap_impact_cases": 74.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 22.85,
+        "shap_impact_cases": -47.8,
+        "direction": "Lowers Risk"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 559.0,
+        "shap_impact_cases": 119.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 1.21,
+        "shap_impact_cases": 92.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -89.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.4,
+        "shap_impact_cases": 88.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.17,
+        "shap_impact_cases": 74.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 22.85,
+        "shap_impact_cases": -47.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.4,
+        "shap_impact_cases": 45.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 67.74,
+        "shap_impact_cases": -43.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 5.65,
+        "shap_impact_cases": -41.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -23.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 851.0,
+        "shap_impact_cases": 16.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 425.0,
+        "shap_impact_cases": -12.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 22.94,
+        "shap_impact_cases": -9.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 15.17,
+        "shap_impact_cases": -7.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.04,
+        "shap_impact_cases": 1.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Kasaragod": {
+    "district": "Kasaragod",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 537.6,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 290.0,
+        "shap_impact_cases": -130.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 0.4,
+        "shap_impact_cases": 107.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 0.34,
+        "shap_impact_cases": 97.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2100.0,
+        "shap_impact_cases": 69.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.0,
+        "shap_impact_cases": -50.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 65.79,
+        "shap_impact_cases": -47.6,
+        "direction": "Lowers Risk"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 290.0,
+        "shap_impact_cases": -130.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 0.4,
+        "shap_impact_cases": 107.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 0.34,
+        "shap_impact_cases": 97.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2100.0,
+        "shap_impact_cases": 69.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.0,
+        "shap_impact_cases": -50.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 65.79,
+        "shap_impact_cases": -47.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.5,
+        "shap_impact_cases": -43.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -41.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 15.94,
+        "shap_impact_cases": -26.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -24.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 25.38,
+        "shap_impact_cases": -22.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 657.0,
+        "shap_impact_cases": 12.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 90.1,
+        "shap_impact_cases": 10.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.06,
+        "shap_impact_cases": -7.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 25.27,
+        "shap_impact_cases": 3.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Kollam": {
+    "district": "Kollam",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 420.0,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 305.0,
+        "shap_impact_cases": -113.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.25,
+        "shap_impact_cases": -60.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.0,
+        "shap_impact_cases": -55.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.38,
+        "shap_impact_cases": 54.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -46.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.02,
+        "shap_impact_cases": 28.1,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 305.0,
+        "shap_impact_cases": -113.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.25,
+        "shap_impact_cases": -60.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.0,
+        "shap_impact_cases": -55.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.38,
+        "shap_impact_cases": 54.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -46.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.02,
+        "shap_impact_cases": 28.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -26.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 23.83,
+        "shap_impact_cases": -21.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 82.1,
+        "shap_impact_cases": 21.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 245.0,
+        "shap_impact_cases": -18.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 94.1,
+        "shap_impact_cases": 16.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1058.0,
+        "shap_impact_cases": 9.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 7.24,
+        "shap_impact_cases": 4.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 22.66,
+        "shap_impact_cases": -4.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.64,
+        "shap_impact_cases": 2.0,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Kottayam": {
+    "district": "Kottayam",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 274.6,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 200.0,
+        "shap_impact_cases": -121.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -68.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 750.0,
+        "shap_impact_cases": -68.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 2.6,
+        "shap_impact_cases": -66.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.03,
+        "shap_impact_cases": 51.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.2,
+        "shap_impact_cases": -38.4,
+        "direction": "Lowers Risk"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 200.0,
+        "shap_impact_cases": -121.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -68.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 750.0,
+        "shap_impact_cases": -68.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 2.6,
+        "shap_impact_cases": -66.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.03,
+        "shap_impact_cases": 51.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.2,
+        "shap_impact_cases": -38.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 97.2,
+        "shap_impact_cases": -32.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.1,
+        "shap_impact_cases": 29.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 65.8,
+        "shap_impact_cases": -26.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -24.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 27.1,
+        "shap_impact_cases": 15.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 1.07,
+        "shap_impact_cases": -8.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 896.0,
+        "shap_impact_cases": 6.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 27.88,
+        "shap_impact_cases": -1.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 11.4,
+        "shap_impact_cases": -1.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Kozhikode": {
+    "district": "Kozhikode",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 654.4,
+    "top_drivers": [
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -132.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 581.0,
+        "shap_impact_cases": 115.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.7,
+        "shap_impact_cases": 63.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 66.36,
+        "shap_impact_cases": -61.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 1.79,
+        "shap_impact_cases": 55.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 9000.0,
+        "shap_impact_cases": 55.3,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -132.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 581.0,
+        "shap_impact_cases": 115.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.7,
+        "shap_impact_cases": 63.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 66.36,
+        "shap_impact_cases": -61.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 1.79,
+        "shap_impact_cases": 55.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 9000.0,
+        "shap_impact_cases": 55.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.7,
+        "shap_impact_cases": 39.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.1,
+        "shap_impact_cases": -38.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -36.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.3,
+        "shap_impact_cases": 33.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.09,
+        "shap_impact_cases": -26.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 20.63,
+        "shap_impact_cases": -24.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 25.62,
+        "shap_impact_cases": -20.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1316.0,
+        "shap_impact_cases": 8.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 25.32,
+        "shap_impact_cases": -8.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Malappuram": {
+    "district": "Malappuram",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 802.0,
+    "top_drivers": [
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 1.9,
+        "shap_impact_cases": 539.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -226.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.04,
+        "shap_impact_cases": -172.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 1455.0,
+        "shap_impact_cases": 143.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 72.37,
+        "shap_impact_cases": -67.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2500.0,
+        "shap_impact_cases": 52.5,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 1.9,
+        "shap_impact_cases": 539.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -226.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.04,
+        "shap_impact_cases": -172.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 1455.0,
+        "shap_impact_cases": 143.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 72.37,
+        "shap_impact_cases": -67.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2500.0,
+        "shap_impact_cases": 52.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 6.6,
+        "shap_impact_cases": -45.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 17.14,
+        "shap_impact_cases": -40.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 22.84,
+        "shap_impact_cases": -39.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 22.45,
+        "shap_impact_cases": 27.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -19.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 93.6,
+        "shap_impact_cases": 12.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 3.39,
+        "shap_impact_cases": 9.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 3.43,
+        "shap_impact_cases": -7.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1158.0,
+        "shap_impact_cases": 5.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Palakkad": {
+    "district": "Palakkad",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 445.3,
+    "top_drivers": [
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -178.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 895.0,
+        "shap_impact_cases": 114.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 3.9,
+        "shap_impact_cases": 72.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 21.14,
+        "shap_impact_cases": -57.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.8,
+        "shap_impact_cases": -53.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 89.3,
+        "shap_impact_cases": 48.4,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -178.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 895.0,
+        "shap_impact_cases": 114.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 3.9,
+        "shap_impact_cases": 72.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 21.14,
+        "shap_impact_cases": -57.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 4.8,
+        "shap_impact_cases": -53.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 89.3,
+        "shap_impact_cases": 48.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 20.65,
+        "shap_impact_cases": -39.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.05,
+        "shap_impact_cases": -36.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 76.26,
+        "shap_impact_cases": -32.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 17.21,
+        "shap_impact_cases": -18.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 4.11,
+        "shap_impact_cases": -13.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -9.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 4.06,
+        "shap_impact_cases": 7.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 627.0,
+        "shap_impact_cases": 6.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 915.0,
+        "shap_impact_cases": 5.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Pathanamthitta": {
+    "district": "Pathanamthitta",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 167.9,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 176.0,
+        "shap_impact_cases": -223.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 430.0,
+        "shap_impact_cases": -74.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -55.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.5,
+        "shap_impact_cases": -51.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 96.7,
+        "shap_impact_cases": -50.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 22.6,
+        "shap_impact_cases": -24.6,
+        "direction": "Lowers Risk"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 176.0,
+        "shap_impact_cases": -223.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 430.0,
+        "shap_impact_cases": -74.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -55.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.5,
+        "shap_impact_cases": -51.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 96.7,
+        "shap_impact_cases": -50.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 22.6,
+        "shap_impact_cases": -24.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 3.06,
+        "shap_impact_cases": 22.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 2.38,
+        "shap_impact_cases": 16.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 453.0,
+        "shap_impact_cases": -16.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 81.23,
+        "shap_impact_cases": 16.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 4.5,
+        "shap_impact_cases": 11.0,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 18.71,
+        "shap_impact_cases": -10.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 21.56,
+        "shap_impact_cases": -8.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -7.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.68,
+        "shap_impact_cases": -6.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Thiruvananthapuram": {
+    "district": "Thiruvananthapuram",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 779.9,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 886.0,
+        "shap_impact_cases": 172.0,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -69.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.35,
+        "shap_impact_cases": -61.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.2,
+        "shap_impact_cases": 46.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 25.36,
+        "shap_impact_cases": -36.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 80.57,
+        "shap_impact_cases": 35.0,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 886.0,
+        "shap_impact_cases": 172.0,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -69.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 5.35,
+        "shap_impact_cases": -61.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 1.2,
+        "shap_impact_cases": 46.5,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 25.36,
+        "shap_impact_cases": -36.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 80.57,
+        "shap_impact_cases": 35.0,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 2350.0,
+        "shap_impact_cases": 34.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -30.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.49,
+        "shap_impact_cases": 29.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 1.69,
+        "shap_impact_cases": 29.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 93.0,
+        "shap_impact_cases": 22.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 3.83,
+        "shap_impact_cases": -15.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1509.0,
+        "shap_impact_cases": -8.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 24.36,
+        "shap_impact_cases": 5.3,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 1.95,
+        "shap_impact_cases": -4.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Thrissur": {
+    "district": "Thrissur",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 720.5,
+    "top_drivers": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 861.0,
+        "shap_impact_cases": 196.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -178.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.0,
+        "shap_impact_cases": -89.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.63,
+        "shap_impact_cases": 87.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 3.8,
+        "shap_impact_cases": 74.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.3,
+        "shap_impact_cases": 55.2,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 861.0,
+        "shap_impact_cases": 196.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -178.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 3.0,
+        "shap_impact_cases": -89.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 2.63,
+        "shap_impact_cases": 87.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 3.8,
+        "shap_impact_cases": 74.8,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 95.3,
+        "shap_impact_cases": 55.2,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 18.64,
+        "shap_impact_cases": -31.7,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 2.42,
+        "shap_impact_cases": 25.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 24.96,
+        "shap_impact_cases": -25.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": -21.6,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.21,
+        "shap_impact_cases": -12.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 790.0,
+        "shap_impact_cases": 6.4,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 1030.0,
+        "shap_impact_cases": 6.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 72.57,
+        "shap_impact_cases": -5.3,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 24.46,
+        "shap_impact_cases": 2.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  },
+  "Wayanad": {
+    "district": "Wayanad",
+    "base_expected_cases": 630.8,
+    "predicted_cases": 190.2,
+    "top_drivers": [
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 31.0,
+        "shap_impact_cases": -163.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -90.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 6.0,
+        "shap_impact_cases": -87.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 21.41,
+        "shap_impact_cases": -57.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 47.5,
+        "shap_impact_cases": -45.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 531.0,
+        "shap_impact_cases": 38.9,
+        "direction": "Pushes Risk Up"
+      }
+    ],
+    "all_contributions": [
+      {
+        "feature": "wq_do_min_mg_l",
+        "label": "Dissolved Oxygen (DO)",
+        "actual_value": 31.0,
+        "shap_impact_cases": -163.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cos_week",
+        "label": "Monsoon Seasonality (Cos)",
+        "actual_value": 0.99,
+        "shap_impact_cases": -90.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_bod_mg_l",
+        "label": "River BOD (Pollution)",
+        "actual_value": 6.0,
+        "shap_impact_cases": -87.4,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "temp_c_lag1",
+        "label": "Preceding Week Temp",
+        "actual_value": 21.41,
+        "shap_impact_cases": -57.8,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "wq_fecal_coliform_mpn",
+        "label": "Fecal Coliform Count",
+        "actual_value": 47.5,
+        "shap_impact_cases": -45.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "cases_week_current",
+        "label": "Current Week Cases (Baseline)",
+        "actual_value": 531.0,
+        "shap_impact_cases": 38.9,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "temp_c_mean",
+        "label": "Mean Temperature (\u00b0C)",
+        "actual_value": 21.01,
+        "shap_impact_cases": -38.0,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_mm_lag1",
+        "label": "Preceding Week Rain (Lag-1)",
+        "actual_value": 0.0,
+        "shap_impact_cases": 28.7,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "population_density",
+        "label": "Population Density",
+        "actual_value": 383.0,
+        "shap_impact_cases": -27.2,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "literacy_rate",
+        "label": "Literacy Rate (%)",
+        "actual_value": 89.0,
+        "shap_impact_cases": 25.6,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "rain_mm_lag2",
+        "label": "2 Weeks Prior Rain (Lag-2)",
+        "actual_value": 13.54,
+        "shap_impact_cases": -23.9,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rainfall_mm_total",
+        "label": "Current Week Rain (t)",
+        "actual_value": 3.5,
+        "shap_impact_cases": 12.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "humidity_pct_mean",
+        "label": "Relative Humidity (%)",
+        "actual_value": 68.7,
+        "shap_impact_cases": -10.5,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "rain_2week_sum",
+        "label": "2-Week Cumulative Rain",
+        "actual_value": 3.5,
+        "shap_impact_cases": -5.1,
+        "direction": "Lowers Risk"
+      },
+      {
+        "feature": "sin_week",
+        "label": "Monsoon Seasonality (Sin)",
+        "actual_value": -0.12,
+        "shap_impact_cases": 3.1,
+        "direction": "Pushes Risk Up"
+      },
+      {
+        "feature": "is_torrential_rain",
+        "label": "Torrential Rain Shock",
+        "actual_value": 0.0,
+        "shap_impact_cases": 0.0,
+        "direction": "Lowers Risk"
+      }
+    ]
+  }
+}

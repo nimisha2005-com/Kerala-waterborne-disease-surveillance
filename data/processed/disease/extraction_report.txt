@@ -1,0 +1,107 @@
+  2020: monthly table not found for shigella (annual 12)
+  2021: monthly table not found for shigella (annual 81)
+  2021: cholera ambiguous (5 matches) - took first
+  2022: monthly table not found for leptospirosis_probable (annual 2833)
+  2022: monthly table not found for hepatitis_a_probable (annual 894)
+  2022: monthly table not found for shigella (annual 83)
+  2023: monthly table not found for hepatitis_a_probable (annual 3508)
+  2023: monthly table not found for leptospirosis_probable (annual 2769)
+  2023: monthly table not found for shigella (annual 90)
+  2023: monthly table not found for cholera (annual 26)
+  2025: only 13 districts found!
+  2025: Alappuzha page missing in PDF -> derived from state total
+
+CHECK: sum of 14 districts vs Kerala total (should match)
+  OK 2011 add                      state=  261178 districts=  261178
+  OK 2011 cholera                  state=      18 districts=      18
+  OK 2011 hepatitis_a              state=    4583 districts=    4583
+  OK 2011 leptospirosis            state=     944 districts=     944
+  OK 2011 typhoid                  state=    2291 districts=    2291
+  OK 2012 cholera                  state=      30 districts=      30
+  OK 2012 hepatitis_a              state=    6305 districts=    6305
+  OK 2012 leptospirosis            state=     736 districts=     736
+  OK 2012 typhoid                  state=    2849 districts=    2849
+  OK 2013 add                      state=  411819 districts=  411819
+  OK 2013 cholera                  state=      20 districts=      20
+  OK 2013 hepatitis_a              state=    6166 districts=    6166
+  OK 2013 leptospirosis            state=     814 districts=     814
+  OK 2013 typhoid                  state=    2930 districts=    2930
+  OK 2014 add                      state=  442104 districts=  442104
+  OK 2014 cholera                  state=       8 districts=       8
+  OK 2014 hepatitis_a              state=    2831 districts=    2831
+  OK 2014 leptospirosis            state=    1075 districts=    1075
+  OK 2014 typhoid                  state=    1956 districts=    1956
+  OK 2015 add                      state=  467102 districts=  467102
+  OK 2015 cholera                  state=       1 districts=       1
+  OK 2015 hepatitis_a              state=    1980 districts=    1980
+  OK 2015 leptospirosis            state=    1098 districts=    1098
+  OK 2015 typhoid                  state=    1772 districts=    1772
+  OK 2016 add                      state=  493973 districts=  493973
+  OK 2016 cholera                  state=      10 districts=      10
+  OK 2016 hepatitis_a              state=    1351 districts=    1351
+  OK 2016 leptospirosis            state=    1710 districts=    1710
+  OK 2016 typhoid                  state=    1668 districts=    1668
+  OK 2017 add                      state=  463368 districts=  463368
+  OK 2017 cholera                  state=       8 districts=       8
+  OK 2017 hepatitis_a              state=     988 districts=     988
+  OK 2017 leptospirosis            state=    1408 districts=    1408
+  OK 2017 typhoid                  state=     314 districts=     314
+  OK 2018 add                      state=  540814 districts=  540814
+  OK 2018 cholera                  state=       9 districts=       9
+  OK 2018 hepatitis_a              state=    1369 districts=    1369
+  OK 2018 leptospirosis            state=    2079 districts=    2079
+  OK 2018 typhoid                  state=     109 districts=     109
+  OK 2019 add                      state=  544027 districts=  544027
+  OK 2019 cholera                  state=       9 districts=       9
+  OK 2019 hepatitis_a              state=    1620 districts=    1620
+  OK 2019 leptospirosis            state=    1211 districts=    1211
+  OK 2019 typhoid                  state=      27 districts=      27
+  OK 2020 add                      state=  250788 districts=  250788
+  OK 2020 cholera                  state=       2 districts=       2
+  OK 2020 hepatitis_a              state=     464 districts=     464
+  OK 2020 leptospirosis            state=    1039 districts=    1039
+  OK 2020 shigella                 state=      12 districts=      12
+  OK 2020 typhoid                  state=      16 districts=      16
+  OK 2021 add                      state=  238227 districts=  238227
+  OK 2021 cholera                  state=       1 districts=       1
+  OK 2021 hepatitis_a              state=     114 districts=     114
+  OK 2021 hepatitis_e              state=       3 districts=       3
+  OK 2021 leptospirosis            state=    1745 districts=    1745
+  OK 2021 shigella                 state=      81 districts=      81
+  OK 2021 typhoid                  state=      30 districts=      30
+  OK 2022 add                      state=  466211 districts=  466211
+  OK 2022 cholera                  state=       0 districts=       0
+  OK 2022 hepatitis_a              state=     231 districts=     231
+  OK 2022 hepatitis_a_probable     state=     894 districts=     894
+  OK 2022 hepatitis_e              state=       7 districts=       7
+  OK 2022 leptospirosis            state=    2482 districts=    2482
+  OK 2022 leptospirosis_probable   state=    2833 districts=    2833
+  OK 2022 shigella                 state=      83 districts=      83
+  OK 2022 typhoid                  state=      55 districts=      55
+  OK 2023 add                      state=  486266 districts=  486266
+  OK 2023 cholera                  state=      26 districts=      26
+  OK 2023 hepatitis_a              state=    1073 districts=    1073
+  OK 2023 hepatitis_a_probable     state=    3508 districts=    3508
+  OK 2023 hepatitis_e              state=       5 districts=       5
+  OK 2023 leptospirosis            state=    2417 districts=    2417
+  OK 2023 leptospirosis_probable   state=    2769 districts=    2769
+  OK 2023 shigella                 state=      90 districts=      90
+  OK 2023 typhoid                  state=     103 districts=     103
+  OK 2024 add                      state=  517618 districts=  517618
+  OK 2024 cholera                  state=      36 districts=      36
+  OK 2024 hepatitis_a              state=    7967 districts=    7967
+  OK 2024 hepatitis_a_probable     state=   20445 districts=   20445
+  OK 2024 hepatitis_e              state=      16 districts=      16
+  OK 2024 leptospirosis            state=    3552 districts=    3552
+  OK 2024 leptospirosis_probable   state=    2428 districts=    2428
+  OK 2024 shigella                 state=     121 districts=     121
+  OK 2024 typhoid                  state=     171 districts=     171
+  OK 2025 add                      state=  524626 districts=  524626
+  OK 2025 cholera                  state=       6 districts=       6
+  OK 2025 hepatitis_a              state=   12420 districts=   12420
+  OK 2025 hepatitis_a_probable     state=   19229 districts=   19229
+  OK 2025 hepatitis_e              state=      29 districts=      29
+  OK 2025 leptospirosis            state=    3485 districts=    3485
+  OK 2025 leptospirosis_probable   state=    2151 districts=    2151
+  OK 2025 shigella                 state=     132 districts=     132
+  OK 2025 typhoid                  state=     431 districts=     431

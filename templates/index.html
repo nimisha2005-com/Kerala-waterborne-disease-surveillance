@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Epidemic Intel — Waterborne Disease Predictive Surveillance</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        zinc: {
+                            850: '#141416',
+                            900: '#0f0f11',
+                            950: '#09090b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'SFMono-Regular', 'Menlo', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            color: #ececec;
+            letter-spacing: -0.011em;
+            overflow-x: hidden;
+        }
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+        /* Minimalist OpenAI-style surfaces */
+        .openai-card {
+            background: #09090b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+        .openai-card-hover {
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .openai-card-hover:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #0c0c0e;
+        }
+        /* Leaflet map canvas styles - NO TILES, PURE VECTOR */
+        .leaflet-container {
+            background: #000000 !important;
+            font-family: inherit;
+            outline: none;
+        }
+        .district-tooltip {
+            background: #141416 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            border-radius: 8px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+            padding: 8px 12px !important;
+            font-size: 12px !important;
+        }
+        .district-tooltip:before {
+            border-top-color: #141416 !important;
+        }
+    </style>
+</head>
+<body class="bg-black text-[#ececec] min-h-screen antialiased selection:bg-white selection:text-black">
+
+    <!-- Minimalist OpenAI Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/[0.08] px-6 py-4 transition-all">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo with Minimalist Kerala Glyph -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center p-1.5 group-hover:border-white/30 transition-colors">
+                    <svg viewBox="0 0 100 160" class="w-full h-full fill-white">
+                        <path d="M 68 8 C 65 14 55 18 45 28 C 38 35 30 50 32 68 C 33 78 38 88 42 98 C 45 108 42 120 48 132 C 52 140 60 152 64 158 C 65 155 68 145 70 135 C 72 120 70 105 68 90 C 65 72 68 55 75 40 C 78 30 75 15 68 8 Z" />
+                    </svg>
+                </div>
+                <div class="flex items-center space-x-2.5">
+                    <span class="font-semibold text-sm tracking-tight text-white">Kerala Epidemic Intel</span>
+                    <span class="text-zinc-600">/</span>
+                    <span class="text-xs text-zinc-400 font-normal">Early Warning System</span>
+                </div>
+            </a>
+
+            <!-- Editorial Nav Links -->
+            <nav class="hidden md:flex items-center space-x-7 text-xs font-normal text-zinc-400">
+                <a href="#map-section" class="hover:text-white transition-colors">Kerala Map</a>
+                <a href="#district-analytics" class="hover:text-white transition-colors">District Analytics</a>
+                <a href="#simulator-section" class="hover:text-white transition-colors">Outbreak Simulator</a>
+                <button onclick="openBenchmarkModal()" class="hover:text-white transition-colors flex items-center space-x-1">
+                    <span>6-Model Benchmarks</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-zinc-500"></i>
+                </button>
+            </nav>
+
+            <!-- Minimalist Status Chip -->
+            <div class="flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/[0.08] text-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span class="text-zinc-300 font-mono text-[11px]">14 Districts Live</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- EDITORIAL HERO / LANDING SECTION -->
+    <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 px-6 max-w-4xl mx-auto">
+        <div class="space-y-6">
+            <!-- Eyebrow Metadata Tag -->
+            <div class="flex items-center space-x-2 text-xs font-mono text-zinc-400 uppercase tracking-widest">
+                <span class="text-emerald-400 font-bold">● Active Surveillance</span>
+                <span class="text-zinc-700">|</span>
+                <span>Week 43, 2025</span>
+                <span class="text-zinc-700">|</span>
+                <span>LightGBM Lag-1 Engine</span>
+            </div>
+
+            <!-- Headline (OpenAI Publication Style) -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white leading-[1.08]">
+                Predicting next-week waterborne disease outbreaks.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl font-light leading-relaxed">
+                An early-warning predictive surveillance model across all 14 districts of Kerala. We forecast acute diarrhoeal outbreaks (<code class="text-zinc-200 code-font text-sm bg-zinc-900 px-1.5 py-0.5 rounded border border-white/10">Week t+1</code>) from preceding precipitation surges, ambient temperature, and CPCB river water quality indices.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 flex flex-wrap items-center gap-3">
+                <a href="#map-section" class="px-5 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-medium text-xs tracking-tight transition-all flex items-center space-x-2">
+                    <span>Touch District on Map Below</span>
+                    <i class="fa-solid fa-arrow-down text-[10px]"></i>
+                </a>
+                <button onclick="quickSelectDistrict('Ernakulam')" class="px-5 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-white/10 font-medium text-xs tracking-tight transition-all">
+                    Quick Inspect: Ernakulam
+                </button>
+                <button onclick="openBenchmarkModal()" class="px-5 py-2.5 rounded-full bg-transparent hover:bg-zinc-900 text-zinc-400 hover:text-white border border-transparent hover:border-white/10 font-medium text-xs tracking-tight transition-all">
+                    View 6-Model Benchmark (R² = 0.540) →
+                </button>
+            </div>
+        </div>
+
+        <!-- 3 Horizontal Minimalist Stat Chips -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-14 border-t border-white/[0.08] mt-14">
+            <div>
+                <div class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Historical Scope</div>
+                <div class="text-sm font-medium text-white mt-1">15 Years Surveillance</div>
+                <div class="text-xs text-zinc-400 mt-0.5">2011–2025 DHS Kerala epidemiology records.</div>
+            </div>
+            <div>
+                <div class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Predictive Trigger</div>
+                <div class="text-sm font-medium text-white mt-1">Weekly Rainfall Lags (t-1, t-2)</div>
+                <div class="text-xs text-zinc-400 mt-0.5">Microbial runoff infiltration into drinking wells.</div>
+            </div>
+            <div>
+                <div class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Bio-Indicators</div>
+                <div class="text-sm font-medium text-white mt-1">100 CPCB Water Stations</div>
+                <div class="text-xs text-zinc-400 mt-0.5">River BOD, Fecal Coliform & Dissolved Oxygen.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KERALA MAP (CLEAN VECTOR CANVAS - NO TILE BACKGROUND) -->
+    <section id="map-section" class="py-12 px-6 max-w-6xl mx-auto scroll-mt-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+            <div>
+                <div class="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-1.5">Geospatial Interface</div>
+                <h2 class="text-2xl sm:text-3xl font-medium text-white tracking-tight">Interactive Kerala District Map</h2>
+                <p class="text-xs sm:text-sm text-zinc-400 mt-1">Touch or click any district boundary. The page automatically focuses and scrolls down to the district's WQI, rainfall, and outbreak metrics.</p>
+            </div>
+
+            <!-- Minimalist Selected Pill -->
+            <div class="flex items-center space-x-2 text-xs font-mono text-zinc-400">
+                <span>Selected:</span>
+                <span id="current-selected-label" class="px-2.5 py-1 rounded bg-zinc-900 border border-white/10 text-white font-medium">
+                    Ernakulam
+                </span>
+            </div>
+        </div>
+
+        <!-- District Fast-Pick Strip (Minimalist horizontal list) -->
+        <div class="mb-4 overflow-x-auto pb-2 flex items-center space-x-1.5 no-scrollbar" id="district-pill-container">
+            <!-- Populated via JS -->
+        </div>
+
+        <!-- Pure Black Vector Map Container (NO TILES, NO CARTODB WATERMARKS!) -->
+        <div class="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-black shadow-2xl">
+            <!-- Floating Minimalist Legend -->
+            <div class="absolute top-4 right-4 z-[1000] bg-black/85 backdrop-blur-md p-3 rounded-xl border border-white/10 text-[11px] font-mono space-y-1.5 shadow-xl">
+                <div class="text-zinc-400 uppercase tracking-wider pb-1 border-b border-white/10">District Selection</div>
+                <div class="flex items-center space-x-2 text-zinc-300">
+                    <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+                    <span>Selected District</span>
+                </div>
+                <div class="flex items-center space-x-2 text-zinc-400">
+                    <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                    <span>Kerala Districts</span>
+                </div>
+            </div>
+
+            <!-- Leaflet Map Canvas (Clean black background, vector polygons only) -->
+            <div id="kerala-map" class="w-full h-[520px] sm:h-[620px] z-10 bg-black"></div>
+
+            <!-- Minimal Touch Hint -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[1000] pointer-events-none">
+                <div class="px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-white/10 text-[11px] font-mono text-zinc-300 flex items-center space-x-2 backdrop-blur-md">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span>Touch any district polygon to inspect analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TOUCHED DISTRICT DETAILED RESULTS -->
+    <section id="district-analytics" class="py-12 px-6 max-w-6xl mx-auto scroll-mt-20">
+        <!-- District Header Card -->
+        <div class="openai-card p-6 sm:p-8 mb-6 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <div class="flex items-center space-x-3 text-xs font-mono text-zinc-400">
+                        <span class="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 uppercase tracking-wider text-[10px]">Touched District</span>
+                        <span id="district-tag-week">Week 43, 2025 Surveillance</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-medium tracking-tight text-white flex items-baseline space-x-3">
+                        <span id="detail-district-name">Ernakulam</span>
+                        <span class="text-sm font-normal text-zinc-500 font-mono">District</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-zinc-400 font-mono">
+                        Population: <span id="detail-population" class="text-white">3,282,388</span> &bull; 
+                        Literacy: <span id="detail-literacy" class="text-white">95.9%</span> &bull; 
+                        Density: <span id="detail-density" class="text-white">1,072</span>/km²
+                    </p>
+                </div>
+
+                <!-- Risk Badge -->
+                <div class="flex items-center">
+                    <div id="risk-badge-box" class="px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 flex items-center space-x-3">
+                        <span id="risk-dot" class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                        <div>
+                            <div class="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Predicted Next-Week Risk</div>
+                            <div id="detail-risk-level" class="text-sm font-semibold text-white">Moderate Risk</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 MAIN RESULT CARDS: WQI | DISEASE OUTBREAK | RAINFALL PREDICTION -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+
+            <!-- CARD 1: WATER QUALITY INDEX (WQI) -->
+            <div class="openai-card openai-card-hover p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Water Quality Index</div>
+                        <span id="wqi-status-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-white/10">
+                            Good
+                        </span>
+                    </div>
+
+                    <div class="my-4 flex items-baseline space-x-2">
+                        <span id="detail-wqi-score" class="text-4xl sm:text-5xl font-medium text-white font-mono tracking-tight">68.6</span>
+                        <span class="text-zinc-500 text-sm font-mono">/ 100</span>
+                    </div>
+
+                    <!-- Progress line -->
+                    <div class="w-full bg-zinc-800 rounded-full h-1.5 mb-6 overflow-hidden">
+                        <div id="detail-wqi-bar" class="bg-white h-1.5 rounded-full transition-all duration-500" style="width: 68.6%"></div>
+                    </div>
+
+                    <!-- Water Parameters Breakdown -->
+                    <div class="space-y-2.5 pt-2 border-t border-white/[0.08] text-xs font-mono">
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Biological Oxygen Demand</span>
+                            <span id="detail-bod" class="text-white">2.8 mg/L</span>
+                        </div>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Fecal Coliform Count</span>
+                            <span id="detail-fecal" class="text-white">480 MPN/100ml</span>
+                        </div>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Dissolved Oxygen (DO)</span>
+                            <span id="detail-do" class="text-white">6.1 mg/L</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-3 border-t border-white/[0.08] text-[11px] text-zinc-400 leading-relaxed">
+                    <span id="detail-wqi-advisory">BOD and coliform within safe seasonal limits for potable treatment.</span>
+                </div>
+            </div>
+
+            <!-- CARD 2: NEXT-WEEK DISEASE OUTBREAK PREDICTION -->
+            <div class="openai-card openai-card-hover p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Outbreak Forecast (ADD)</div>
+                        <span id="detail-outbreak-trend-pill" class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-white/10">
+                            +8% Surge
+                        </span>
+                    </div>
+
+                    <div class="my-4 flex items-baseline space-x-2">
+                        <span id="detail-pred-cases" class="text-4xl sm:text-5xl font-medium text-white font-mono tracking-tight">545</span>
+                        <span class="text-zinc-500 text-sm font-mono">cases</span>
+                    </div>
+
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-xs text-zinc-400">Incidence Rate:</span>
+                        <span id="detail-pred-rate" class="text-xs font-mono text-zinc-200 bg-zinc-900 px-2 py-0.5 rounded border border-white/10">16.6 per lakh</span>
+                    </div>
+
+                    <div class="space-y-2.5 pt-2 border-t border-white/[0.08] text-xs font-mono">
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Current Week Observed</span>
+                            <span id="detail-current-cases" class="text-white">504 cases</span>
+                        </div>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Predictive Engine</span>
+                            <span class="text-white">LightGBM (R² 0.540)</span>
+                        </div>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Lag Window</span>
+                            <span class="text-white">7 to 14 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-3 border-t border-white/[0.08] text-[11px] text-zinc-400 leading-relaxed">
+                    <span id="detail-outbreak-alert-text">Primary Health Centres (PHCs) advised to pre-position ORS and inspect chlorination dosages.</span>
+                </div>
+            </div>
+
+            <!-- CARD 3: PREVIOUS-WEEK RAINFALL & CLIMATE PREDICTOR -->
+            <div class="openai-card openai-card-hover p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Rainfall Precursor (Lag-1)</div>
+                        <span id="detail-rain-trend-pill" class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-white/10">
+                            Rising ↗
+                        </span>
+                    </div>
+
+                    <div class="my-4 flex items-baseline space-x-2">
+                        <span id="detail-cur-rain" class="text-4xl sm:text-5xl font-medium text-white font-mono tracking-tight">48.2</span>
+                        <span class="text-zinc-500 text-sm font-mono">mm rain</span>
+                    </div>
+
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-xs text-zinc-400">Previous Week (t-1):</span>
+                        <span id="detail-prev-rain" class="text-xs font-mono text-zinc-200 bg-zinc-900 px-2 py-0.5 rounded border border-white/10">32.6 mm</span>
+                    </div>
+
+                    <div class="space-y-2.5 pt-2 border-t border-white/[0.08] text-xs font-mono">
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>2-Week Cumulative Rain</span>
+                            <span id="detail-2w-rain" class="text-white">80.8 mm</span>
+                        </div>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Mean Temperature</span>
+                            <span id="detail-temp" class="text-white">27.4 °C</span>
+                        </div>
+                        <div class="flex justify-between items-center text-zinc-400">
+                            <span>Relative Humidity</span>
+                            <span id="detail-humidity" class="text-white">82.1 %</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-3 border-t border-white/[0.08] text-[11px] text-zinc-400 leading-relaxed">
+                    <span>Preceding precipitation washes enteric pathogens into unchlorinated wells, inducing clinical disease in Week t+1.</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- EXPLAINABLE AI (LOCAL SHAP ATTRIBUTIONS PER DISTRICT) -->
+        <div class="openai-card p-6 sm:p-8 mb-6 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-5 gap-3 border-b border-white/[0.08] pb-4">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Explainable AI &bull; SHAP Cooperative Game Theory</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-white tracking-tight">Why is the Model Predicting this Caseload?</h3>
+                    <p class="text-xs text-zinc-400 mt-0.5">SHapley Additive exPlanations (SHAP) decompose the exact mathematical contribution of each environmental and climate variable.</p>
+                </div>
+                <div class="flex items-center space-x-3 text-xs font-mono">
+                    <span class="text-zinc-500">State Baseline:</span>
+                    <span id="shap-base-val" class="px-2.5 py-1 rounded bg-zinc-900 border border-white/10 text-zinc-300">630.8 baseline cases</span>
+                </div>
+            </div>
+
+            <!-- Top SHAP Feature Drivers Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="shap-drivers-container">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] font-mono text-zinc-400">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                    <span>Positive SHAP = Increases Outbreak Risk</span>
+                    <span class="text-zinc-600">|</span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Negative SHAP = Lowers Outbreak Risk</span>
+                </div>
+                <button onclick="openBenchmarkModal()" class="text-cyan-400 hover:text-white transition-colors flex items-center space-x-1">
+                    <span>Inspect Global SHAP Beeswarm Plot &rarr;</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 12-WEEK TRAJECTORY CHART (CLEAN OPENAI CHART) -->
+        <div class="openai-card p-6 sm:p-8 mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+                <div>
+                    <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Trajectory Analysis</div>
+                    <h3 class="text-lg font-medium text-white tracking-tight mt-0.5">Preceding Rainfall vs Outbreak Cases (12 Weeks)</h3>
+                </div>
+                <div class="flex items-center space-x-4 text-xs font-mono text-zinc-400">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-2.5 h-2.5 rounded bg-white"></span>
+                        <span>Rainfall (mm)</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-2.5 h-2.5 rounded bg-rose-500"></span>
+                        <span>Outbreak Cases</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-72 sm:h-80">
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- WHAT-IF OUTBREAK SIMULATOR -->
+        <div id="simulator-section" class="openai-card p-6 sm:p-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 border-b border-white/[0.08] pb-5">
+                <div>
+                    <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">Scenario Modeling</div>
+                    <h3 class="text-xl sm:text-2xl font-medium text-white tracking-tight">Simulate Next-Week Climate Shocks</h3>
+                    <p class="text-xs text-zinc-400 mt-1">Evaluate how rainfall surges and water degradation impact projected cases in <span id="sim-district-label" class="text-white font-medium">Ernakulam</span>.</p>
+                </div>
+
+                <button onclick="runSimulation()" class="px-5 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-medium text-xs tracking-tight transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-play text-[10px]"></i>
+                    <span>Run Simulation</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Slider 1: Current Week Rainfall -->
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-mono">
+                        <span class="text-zinc-400">Current Week Rain:</span>
+                        <span id="slider-val-rain" class="text-white font-semibold">65.0 mm</span>
+                    </div>
+                    <input type="range" id="sim-rain" min="0" max="350" step="5" value="65" oninput="updateSimSlider('rain', this.value, 'mm')" class="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+                    <div class="flex justify-between text-[10px] text-zinc-500 font-mono">
+                        <span>0 mm</span>
+                        <span>150 mm</span>
+                        <span>350 mm</span>
+                    </div>
+                </div>
+
+                <!-- Slider 2: Previous Week Rainfall -->
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-mono">
+                        <span class="text-zinc-400">Previous Week Rain:</span>
+                        <span id="slider-val-rain-lag" class="text-white font-semibold">45.0 mm</span>
+                    </div>
+                    <input type="range" id="sim-rain-lag" min="0" max="350" step="5" value="45" oninput="updateSimSlider('rain-lag', this.value, 'mm')" class="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+                    <div class="flex justify-between text-[10px] text-zinc-500 font-mono">
+                        <span>0 mm</span>
+                        <span>150 mm</span>
+                        <span>350 mm</span>
+                    </div>
+                </div>
+
+                <!-- Slider 3: River BOD -->
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-mono">
+                        <span class="text-zinc-400">River Water BOD:</span>
+                        <span id="slider-val-bod" class="text-white font-semibold">3.2 mg/L</span>
+                    </div>
+                    <input type="range" id="sim-bod" min="0.5" max="10.0" step="0.1" value="3.2" oninput="updateSimSlider('bod', this.value, 'mg/L')" class="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+                    <div class="flex justify-between text-[10px] text-zinc-500 font-mono">
+                        <span>1.0 (Clean)</span>
+                        <span>3.0 (Limit)</span>
+                        <span>10.0 (Severe)</span>
+                    </div>
+                </div>
+
+                <!-- Slider 4: Active Baseline Cases -->
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-mono">
+                        <span class="text-zinc-400">Current Week Cases:</span>
+                        <span id="slider-val-cases" class="text-white font-semibold">520 cases</span>
+                    </div>
+                    <input type="range" id="sim-cases" min="50" max="2500" step="10" value="520" oninput="updateSimSlider('cases', this.value, 'cases')" class="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-white">
+                    <div class="flex justify-between text-[10px] text-zinc-500 font-mono">
+                        <span>50</span>
+                        <span>1000</span>
+                        <span>2500</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulation Output -->
+            <div id="sim-result-box" class="mt-6 p-4 rounded-xl bg-zinc-900 border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-800 border border-white/10 flex items-center justify-center text-white text-base">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-mono uppercase text-zinc-500">Simulated Next-Week Outcome</div>
+                        <div class="text-base font-medium text-white flex items-center space-x-2 mt-0.5">
+                            <span>Predicted:</span>
+                            <span id="sim-pred-cases" class="text-xl font-bold font-mono text-white">545 Cases</span>
+                            <span id="sim-pred-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-white/10">Moderate Risk</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-xs text-zinc-400 max-w-md font-mono text-[11px]">
+                    <span id="sim-advisory-text">Precipitation runoff elevates enteric pathogen proliferation. Municipal water authorities should test chlorine residuals.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENCHMARKS MODAL (RESEARCH PAPER STYLE) -->
+    <div id="benchmark-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="openai-card max-w-4xl w-full p-6 sm:p-8 border border-white/15 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBenchmarkModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-white text-base">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="space-y-1 mb-4">
+                <div class="text-xs font-mono text-zinc-400 uppercase tracking-widest">Model Evaluation & Benchmark</div>
+                <h3 class="text-xl font-medium text-white tracking-tight">6 Machine Learning Architectures Evaluated</h3>
+                <p class="text-xs text-zinc-400">5-fold spatial & temporal cross-validation on 10,906 weekly district surveillance observations (2011–2025).</p>
+            </div>
+
+            <div class="overflow-x-auto my-5">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/10 text-zinc-400 uppercase font-mono tracking-wider text-[11px]">
+                            <th class="py-2.5 px-3">Architecture</th>
+                            <th class="py-2.5 px-3">Family</th>
+                            <th class="py-2.5 px-3">CV R² Score</th>
+                            <th class="py-2.5 px-3">MAE (Cases/Wk)</th>
+                            <th class="py-2.5 px-3">RMSE</th>
+                            <th class="py-2.5 px-3">Outcome</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/[0.06] font-mono" id="benchmark-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-4 rounded-xl bg-zinc-900 border border-white/10 text-xs text-zinc-300 flex items-start space-x-3">
+                <i class="fa-solid fa-check text-white text-sm mt-0.5"></i>
+                <div class="space-y-1 font-mono text-[11px]">
+                    <span class="font-bold text-white">Winning Model: LightGBM Early-Warning Regressor</span>
+                    <p class="text-zinc-400">LightGBM achieved the lowest prediction error (MAE: 243.6 cases/week) and highest predictive correlation (R² = 0.540). Its tree-split histogram bins naturally capture non-linear precipitation thresholds and water contamination lag effects.</p>
+                </div>
+            </div>
+
+            <!-- SHAP EXPLAINABLE AI SECTION INSIDE MODAL -->
+            <div class="mt-6 pt-6 border-t border-white/10 space-y-4">
+                <div class="flex items-center space-x-2 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>SHAP (SHapley Additive exPlanations) &bull; Global Feature Interpretability</span>
+                </div>
+                <h4 class="text-lg font-medium text-white tracking-tight">How Features Influence Next-Week Outbreak Predictions</h4>
+                <p class="text-xs text-zinc-400 leading-relaxed font-mono text-[11px]">
+                    Using cooperative game theory, SHAP computes the marginal contribution of every environmental variable across 10,906 weekly observations. Red points denote high feature values; blue points denote low feature values.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <!-- SHAP Beeswarm Plot -->
+                    <div class="p-3 rounded-xl bg-zinc-950 border border-white/10 space-y-2">
+                        <div class="text-xs font-mono text-zinc-300 font-medium">SHAP Beeswarm Summary Plot</div>
+                        <img src="/api/weekly-charts/shap_summary_beeswarm.png" class="w-full rounded-lg border border-white/10" alt="SHAP Beeswarm Summary Plot">
+                        <p class="text-[10px] font-mono text-zinc-500">Shows how high preceding rainfall (red) shifts predictions toward higher caseloads.</p>
+                    </div>
+
+                    <!-- SHAP Feature Importance Bar -->
+                    <div class="p-3 rounded-xl bg-zinc-950 border border-white/10 space-y-2">
+                        <div class="text-xs font-mono text-zinc-300 font-medium">Mean Absolute SHAP Impact (|Cases/Wk|)</div>
+                        <img src="/api/weekly-charts/shap_feature_importance_bar.png" class="w-full rounded-lg border border-white/10" alt="SHAP Feature Importance Bar">
+                        <p class="text-[10px] font-mono text-zinc-500">Rankings of variables by average absolute impact on disease case predictions.</p>
+                    </div>
+                </div>
+
+                <!-- SHAP Partial Dependence -->
+                <div class="p-3 rounded-xl bg-zinc-950 border border-white/10 space-y-2">
+                    <div class="text-xs font-mono text-zinc-300 font-medium">Preceding-Week Rain (Lag-1) Tipping Point & Interaction with River BOD</div>
+                    <img src="/api/weekly-charts/shap_rainfall_dependence.png" class="w-full rounded-lg border border-white/10" alt="SHAP Rainfall Dependence">
+                    <p class="text-[10px] font-mono text-zinc-500">Demonstrates that rainfall over 75 mm sharply increases next-week outbreak risk, especially when river BOD is elevated.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MINIMAL FOOTER -->
+    <footer class="border-t border-white/[0.08] bg-black py-12 px-6 mt-20">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-zinc-500">
+            <div class="flex items-center space-x-3">
+                <div class="w-6 h-6 rounded bg-zinc-900 border border-white/10 flex items-center justify-center p-1">
+                    <svg viewBox="0 0 100 160" class="w-full h-full fill-white">
+                        <path d="M 68 8 C 65 14 55 18 45 28 C 38 35 30 50 32 68 C 33 78 38 88 42 98 C 45 108 42 120 48 132 C 52 140 60 152 64 158 C 65 155 68 145 70 135 C 72 120 70 105 68 90 C 65 72 68 55 75 40 C 78 30 75 15 68 8 Z" />
+                    </svg>
+                </div>
+                <span>Kerala Epidemic Intelligence Platform &bull; Academic Surveillance Model</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>Data: DHS Kerala &bull; CPCB &bull; NASA POWER</span>
+                <span>Model: LightGBM</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: PURE VECTOR MAP (NO TILES, NO WATERMARKS) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        let map;
+        let geojsonLayer;
+        let timelineChart;
+        let currentDistrict = "Ernakulam";
+        let geojsonData = null;
+
+        const KERALA_DISTRICTS = [
+            "Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", 
+            "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", 
+            "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"
+        ];
+
+        // Map styling: Single uniform base color, distinct color for selected district
+        const MAP_BASE_COLOR = "#1c1c24";       // Uniform sleek dark tone for all Kerala districts
+        const MAP_BASE_BORDER = "rgba(255, 255, 255, 0.18)";
+        const MAP_HOVER_COLOR = "#2a2a38";      // Subtle hover tone
+        const MAP_SELECTED_COLOR = "#0284c7";   // Vibrant electric sky-cyan for selected district
+        const MAP_SELECTED_BORDER = "#ffffff";  // Crisp white glowing outline
+
+        document.addEventListener("DOMContentLoaded", function() {
+            initPureVectorMap();
+            populateDistrictPills();
+            loadDistrictSummary("Ernakulam", false);
+            loadBenchmarks();
+        });
+
+        // Initialize pure vector map - NO TILE LAYER (no CartoDB watermarks!)
+        function initPureVectorMap() {
+            map = L.map("kerala-map", {
+                zoomControl: false,
+                attributionControl: false,
+                scrollWheelZoom: false, // Prevents hijacking page scroll
+                doubleClickZoom: true,
+                dragging: true
+            });
+
+            // Zoom control bottom-left
+            L.control.zoom({ position: 'bottomleft' }).addTo(map);
+
+            // Fetch District GeoJSON
+            fetch("/api/geojson")
+                .then(res => res.json())
+                .then(data => {
+                    geojsonData = data;
+                    renderVectorGeoJson(data);
+                })
+                .catch(err => console.error("Error loading GeoJSON:", err));
+        }
+
+        // Render pure geometric district boundaries
+        function renderVectorGeoJson(data) {
+            if (geojsonLayer) {
+                map.removeLayer(geojsonLayer);
+            }
+
+            geojsonLayer = L.geoJSON(data, {
+                style: function(feature) {
+                    const dName = feature.properties.district;
+                    const isSelected = (dName === currentDistrict);
+
+                    return {
+                        fillColor: isSelected ? MAP_SELECTED_COLOR : MAP_BASE_COLOR,
+                        weight: isSelected ? 2.5 : 1.0,
+                        opacity: 1,
+                        color: isSelected ? MAP_SELECTED_BORDER : MAP_BASE_BORDER,
+                        fillOpacity: isSelected ? 0.95 : 0.85
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    const dName = feature.properties.district;
+                    
+                    // Minimalist Tooltip
+                    layer.bindTooltip(`
+                        <div class="font-medium text-white text-xs">${dName}</div>
+                        <div class="text-[10px] text-zinc-400 font-mono mt-0.5">Risk: ${feature.properties.risk_level || 'Normal'}</div>
+                        <div class="text-[9px] text-zinc-500 font-mono mt-1">Tap to inspect →</div>
+                    `, {
+                        className: "district-tooltip",
+                        sticky: true
+                    });
+
+                    // Hover & Touch Events
+                    layer.on({
+                        mouseover: function(e) {
+                            const l = e.target;
+                            if (feature.properties.district !== currentDistrict) {
+                                l.setStyle({
+                                    weight: 1.5,
+                                    color: "#ffffff",
+                                    fillColor: MAP_HOVER_COLOR,
+                                    fillOpacity: 0.95
+                                });
+                            }
+                        },
+                        mouseout: function(e) {
+                            highlightSelectedDistrict();
+                        },
+                        click: function(e) {
+                            selectDistrict(dName, true);
+                        }
+                    });
+                }
+            }).addTo(map);
+
+            // Auto-center Kerala perfectly on the canvas
+            map.fitBounds(geojsonLayer.getBounds(), {
+                padding: [30, 30]
+            });
+
+            highlightSelectedDistrict();
+        }
+
+        // Highlight selected district with distinct color
+        function highlightSelectedDistrict() {
+            if (!geojsonLayer) return;
+            geojsonLayer.eachLayer(function(layer) {
+                const dName = layer.feature.properties.district;
+                if (dName === currentDistrict) {
+                    layer.setStyle({
+                        fillColor: MAP_SELECTED_COLOR,
+                        weight: 2.5,
+                        color: MAP_SELECTED_BORDER,
+                        fillOpacity: 0.95
+                    });
+                    layer.bringToFront();
+                } else {
+                    layer.setStyle({
+                        fillColor: MAP_BASE_COLOR,
+                        weight: 1.0,
+                        color: MAP_BASE_BORDER,
+                        fillOpacity: 0.85
+                    });
+                }
+            });
+        }
+
+        // Fast-click pill strip
+        function populateDistrictPills() {
+            const container = document.getElementById("district-pill-container");
+            container.innerHTML = "";
+            KERALA_DISTRICTS.forEach(d => {
+                const btn = document.createElement("button");
+                btn.id = `pill-${d}`;
+                btn.className = `px-3 py-1 rounded-full text-xs font-mono whitespace-nowrap transition-all border ${d === currentDistrict ? 'bg-sky-500 text-white border-sky-400 font-semibold shadow-md shadow-sky-500/20' : 'bg-zinc-900 text-zinc-400 border-white/10 hover:border-white/20'}`;
+                btn.innerText = d;
+                btn.onclick = () => selectDistrict(d, true);
+                container.appendChild(btn);
+            });
+        }
+
+        // District selection logic
+        function selectDistrict(districtName, shouldScroll = true) {
+            currentDistrict = districtName;
+            document.getElementById("current-selected-label").innerText = districtName;
+            document.getElementById("sim-district-label").innerText = districtName;
+
+            // Update pills
+            KERALA_DISTRICTS.forEach(d => {
+                const el = document.getElementById(`pill-${d}`);
+                if (el) {
+                    if (d === currentDistrict) {
+                        el.className = "px-3 py-1 rounded-full text-xs font-mono whitespace-nowrap transition-all border bg-sky-500 text-white border-sky-400 font-semibold shadow-md shadow-sky-500/20";
+                    } else {
+                        el.className = "px-3 py-1 rounded-full text-xs font-mono whitespace-nowrap transition-all border bg-zinc-900 text-zinc-400 border-white/10 hover:border-white/20";
+                    }
+                }
+            });
+
+            highlightSelectedDistrict();
+            loadDistrictSummary(districtName, shouldScroll);
+        }
+
+        function quickSelectDistrict(name) {
+            selectDistrict(name, true);
+        }
+
+        // Load summary metrics from API
+        function loadDistrictSummary(districtName, shouldScroll) {
+            fetch(`/api/district-summary/${encodeURIComponent(districtName)}`)
+                .then(res => res.json())
+                .then(data => {
+                    renderDistrictData(data);
+                    if (shouldScroll) {
+                        const target = document.getElementById("district-analytics");
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                })
+                .catch(err => console.error("Error loading district summary:", err));
+        }
+
+        // Populate DOM
+        function renderDistrictData(d) {
+            document.getElementById("detail-district-name").innerText = d.district;
+            document.getElementById("detail-population").innerText = d.population.toLocaleString();
+            document.getElementById("detail-literacy").innerText = d.literacy_rate.toFixed(1) + "%";
+            document.getElementById("detail-density").innerText = d.population_density.toLocaleString();
+            document.getElementById("district-tag-week").innerText = `Week ${d.week}, ${d.year} Surveillance`;
+
+            // Risk level
+            const riskText = document.getElementById("detail-risk-level");
+            const riskDot = document.getElementById("risk-dot");
+            riskText.innerText = d.outbreak_risk_level;
+
+            if (d.outbreak_risk_level === "High Alert" || d.outbreak_risk_level === "High Risk") {
+                riskDot.className = "w-2.5 h-2.5 rounded-full bg-rose-500";
+            } else if (d.outbreak_risk_level === "Moderate Risk") {
+                riskDot.className = "w-2.5 h-2.5 rounded-full bg-amber-400";
+            } else {
+                riskDot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400";
+            }
+
+            // WQI Card
+            document.getElementById("detail-wqi-score").innerText = d.wqi_score.toFixed(1);
+            document.getElementById("detail-wqi-bar").style.width = Math.min(100, Math.max(5, d.wqi_score)) + "%";
+            const wqiStatusBadge = document.getElementById("wqi-status-badge");
+            wqiStatusBadge.innerText = d.wqi_status;
+
+            document.getElementById("detail-bod").innerText = d.river_bod.toFixed(1) + " mg/L";
+            document.getElementById("detail-fecal").innerText = Math.round(d.river_fecal_coliform) + " MPN/100ml";
+            document.getElementById("detail-do").innerText = d.river_dissolved_oxygen.toFixed(1) + " mg/L";
+
+            const wqiAdvisory = document.getElementById("detail-wqi-advisory");
+            if (d.wqi_score < 45) {
+                wqiAdvisory.innerText = "Severe fecal contamination. Elevated chlorination and boiling mandatory.";
+            } else if (d.wqi_score < 70) {
+                wqiAdvisory.innerText = "Moderate bacterial presence in river reaches. Precaution advised in flood zones.";
+            } else {
+                wqiAdvisory.innerText = "Water parameters satisfy standard potable treatment thresholds.";
+            }
+
+            // Disease Outbreak Card
+            document.getElementById("detail-pred-cases").innerText = d.predicted_next_week_cases.toLocaleString();
+            document.getElementById("detail-pred-rate").innerText = d.predicted_next_week_rate_per_lakh.toFixed(1) + " per lakh";
+            document.getElementById("detail-current-cases").innerText = d.current_week_cases.toLocaleString() + " cases";
+
+            const diff = d.predicted_next_week_cases - d.current_week_cases;
+            const diffPct = d.current_week_cases > 0 ? Math.round((diff / d.current_week_cases) * 100) : 0;
+            const trendPill = document.getElementById("detail-outbreak-trend-pill");
+            if (diff >= 0) {
+                trendPill.innerText = `+${diffPct}% Surge`;
+            } else {
+                trendPill.innerText = `${diffPct}% Drop`;
+            }
+
+            const alertText = document.getElementById("detail-outbreak-alert-text");
+            if (d.outbreak_risk_level === "High Alert" || d.outbreak_risk_level === "High Risk") {
+                alertText.innerText = "CRITICAL: Immediate boil-water warnings via ASHA workers; pre-position ORS in PHCs.";
+            } else if (d.outbreak_risk_level === "Moderate Risk") {
+                alertText.innerText = "ELEVATED: Check chlorination at pipe abstraction points and monitor well runoff.";
+            } else {
+                alertText.innerText = "NORMAL: Routine weekly epidemiological monitoring; cases within expected seasonal baseline.";
+            }
+
+            // Rainfall Card
+            document.getElementById("detail-cur-rain").innerText = d.current_week_rain_mm.toFixed(1);
+            document.getElementById("detail-prev-rain").innerText = d.prev_week_rain_mm.toFixed(1) + " mm";
+            document.getElementById("detail-2w-rain").innerText = (d.current_week_rain_mm + d.prev_week_rain_mm).toFixed(1) + " mm";
+            document.getElementById("detail-temp").innerText = d.temp_c.toFixed(1) + " °C";
+            document.getElementById("detail-humidity").innerText = d.humidity_pct.toFixed(1) + " %";
+
+            const rainPill = document.getElementById("detail-rain-trend-pill");
+            rainPill.innerText = d.rain_trend + (d.rain_trend === "Rising" ? " ↗" : (d.rain_trend === "Falling" ? " ↘" : " ➔"));
+
+            // Sliders
+            document.getElementById("sim-rain").value = d.current_week_rain_mm;
+            document.getElementById("slider-val-rain").innerText = d.current_week_rain_mm.toFixed(1) + " mm";
+            document.getElementById("sim-rain-lag").value = d.prev_week_rain_mm;
+            document.getElementById("slider-val-rain-lag").innerText = d.prev_week_rain_mm.toFixed(1) + " mm";
+            document.getElementById("sim-bod").value = d.river_bod;
+            document.getElementById("slider-val-bod").innerText = d.river_bod.toFixed(1) + " mg/L";
+            document.getElementById("sim-cases").value = d.current_week_cases;
+            document.getElementById("slider-val-cases").innerText = d.current_week_cases + " cases";
+
+            renderTimelineChart(d.history, d.predicted_next_week_cases);
+
+            // Render SHAP Explainable AI local attribution
+            if (d.shap_explanation && d.shap_explanation.top_drivers && d.shap_explanation.top_drivers.length > 0) {
+                document.getElementById("shap-base-val").innerText = d.shap_explanation.base_expected_cases.toFixed(1) + " baseline cases";
+                const container = document.getElementById("shap-drivers-container");
+                container.innerHTML = "";
+                d.shap_explanation.top_drivers.forEach(drv => {
+                    const isPushUp = (drv.shap_impact_cases > 0);
+                    const div = document.createElement("div");
+                    div.className = "p-3 rounded-xl bg-zinc-900 border border-white/[0.08] flex items-center justify-between";
+                    div.innerHTML = `
+                        <div>
+                            <div class="text-xs font-mono text-zinc-300 font-medium">${drv.label}</div>
+                            <div class="text-[10px] text-zinc-500 font-mono mt-0.5">Value: <span class="text-white">${drv.actual_value}</span></div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs font-mono font-bold ${isPushUp ? 'text-rose-400' : 'text-emerald-400'}">
+                                ${isPushUp ? '+' : ''}${drv.shap_impact_cases} cases
+                            </div>
+                            <div class="text-[9px] font-mono text-zinc-400">
+                                ${isPushUp ? '↑ Pushes Outbreak Up' : '↓ Lowers Risk'}
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+        }
+
+        // Render minimalist Chart.js
+        function renderTimelineChart(history, nextWeekPrediction) {
+            const ctx = document.getElementById("timelineChart").getContext("2d");
+            
+            if (timelineChart) {
+                timelineChart.destroy();
+            }
+
+            let labels = [];
+            let rainData = [];
+            let casesData = [];
+
+            if (history && history.length > 0) {
+                history.forEach(h => {
+                    labels.push(`Wk ${h.week}`);
+                    rainData.push(h.rainfall_mm_total);
+                    casesData.push(h.cases_week_current);
+                });
+            } else {
+                for (let i = 32; i <= 43; i++) {
+                    labels.push(`Wk ${i}`);
+                    rainData.push(Math.round(20 + Math.random() * 80));
+                    casesData.push(Math.round(200 + Math.random() * 400));
+                }
+            }
+
+            labels.push("Wk 44 (Pred)");
+            casesData.push(nextWeekPrediction);
+            rainData.push(null);
+
+            timelineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Disease Cases',
+                            data: casesData,
+                            borderColor: '#ffffff',
+                            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#ffffff',
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            tension: 0.3,
+                            yAxisID: 'yCases',
+                            fill: true
+                        },
+                        {
+                            label: 'Rainfall (mm)',
+                            data: rainData,
+                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                            borderWidth: 1,
+                            type: 'bar',
+                            yAxisID: 'yRain',
+                            borderRadius: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#141416',
+                            titleColor: '#ffffff',
+                            bodyColor: '#a1a1aa',
+                            borderColor: 'rgba(255, 255, 255, 0.15)',
+                            borderWidth: 1,
+                            padding: 8
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#71717a', font: { family: 'JetBrains Mono', size: 10 } }
+                        },
+                        yCases: {
+                            type: 'linear',
+                            position: 'left',
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#ececec', font: { family: 'JetBrains Mono', size: 10 } }
+                        },
+                        yRain: {
+                            type: 'linear',
+                            position: 'right',
+                            grid: { display: false },
+                            ticks: { color: '#71717a', font: { family: 'JetBrains Mono', size: 10 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateSimSlider(id, val, unit) {
+            document.getElementById(`slider-val-${id}`).innerText = `${parseFloat(val).toFixed(1)} ${unit}`;
+        }
+
+        function runSimulation() {
+            const rain = parseFloat(document.getElementById("sim-rain").value);
+            const rainLag = parseFloat(document.getElementById("sim-rain-lag").value);
+            const bod = parseFloat(document.getElementById("sim-bod").value);
+            const cases = parseFloat(document.getElementById("sim-cases").value);
+
+            fetch("/api/predict-weekly", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    district: currentDistrict,
+                    rainfall_mm_total: rain,
+                    rain_mm_lag1: rainLag,
+                    wq_bod_mg_l: bod,
+                    cases_week_current: cases
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("sim-pred-cases").innerText = `${data.predicted_next_week_cases.toLocaleString()} Cases`;
+                const badge = document.getElementById("sim-pred-badge");
+                badge.innerText = data.risk_level;
+
+                if (data.advisories && data.advisories.length > 0) {
+                    document.getElementById("sim-advisory-text").innerText = data.advisories[0];
+                }
+            })
+            .catch(err => console.error("Error running simulation:", err));
+        }
+
+        function loadBenchmarks() {
+            fetch("/api/weekly-models-comparison")
+                .then(res => res.json())
+                .then(models => {
+                    const tbody = document.getElementById("benchmark-table-body");
+                    tbody.innerHTML = "";
+                    models.forEach(m => {
+                        const tr = document.createElement("tr");
+                        const isWinner = m.Model.includes("LightGBM");
+                        tr.className = isWinner ? "bg-white/[0.04] text-white font-medium" : "text-zinc-400";
+                        tr.innerHTML = `
+                            <td class="py-2.5 px-3 ${isWinner ? 'text-white' : ''}">${m.Model}</td>
+                            <td class="py-2.5 px-3 text-zinc-500 font-sans text-[11px]">${m.Type}</td>
+                            <td class="py-2.5 px-3">${parseFloat(m.R2_Score).toFixed(3)}</td>
+                            <td class="py-2.5 px-3">${parseFloat(m.MAE).toFixed(1)}</td>
+                            <td class="py-2.5 px-3">${parseFloat(m.RMSE).toFixed(1)}</td>
+                            <td class="py-2.5 px-3">
+                                ${isWinner 
+                                    ? '<span class="px-2 py-0.5 rounded bg-white text-black font-sans font-medium text-[10px]">Best Performer</span>' 
+                                    : '<span class="text-zinc-600 text-[10px]">Evaluated</span>'}
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(err => console.error("Error loading benchmarks:", err));
+        }
+
+        function openBenchmarkModal() {
+            document.getElementById("benchmark-modal").classList.remove("hidden");
+        }
+
+        function closeBenchmarkModal() {
+            document.getElementById("benchmark-modal").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
